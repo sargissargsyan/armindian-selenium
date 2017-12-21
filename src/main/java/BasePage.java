@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -20,6 +21,10 @@ public class BasePage {
 
     public WebElement find(By locator) {
         return driver.findElement(locator);
+    }
+
+    public List<WebElement> findElements(By locator) {
+        return driver.findElements(locator);
     }
 
     public WebElement find(String cssSelector) {
