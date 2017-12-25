@@ -1,6 +1,9 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -60,6 +63,26 @@ public class BasePage {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public boolean isDisplayed(WebElement element, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (TimeoutException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isNotDisplayed(WebElement element, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.invisibilityOf(element));
+        } catch (TimeoutException e) {
+            return false;
+        }
+        return true;
     }
     public boolean isDisplayed(By locator) {
         return isDisplayed(find(locator));
