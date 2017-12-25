@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  * Created by sargis on 12/14/17
  */
 public class BasePage {
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public BasePage(WebDriver webDriver) {
         this.driver = webDriver;
