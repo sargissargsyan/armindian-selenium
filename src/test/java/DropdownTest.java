@@ -30,5 +30,12 @@ public class DropdownTest {
         dropdownPage.selectOption("Option 2");
         assertEquals(dropdownPage.getSelectedOption(), "Option 2");
     }
+    @Test
+    public void alert() {
+        dropdownPage.forceAlert();
+        dropdownPage.closeAlert();
+
+    }
+
 
 }

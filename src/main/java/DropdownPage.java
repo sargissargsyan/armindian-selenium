@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,6 +20,13 @@ public class DropdownPage extends BasePage {
 
     public List<WebElement> getDropdownOptions() {
         return getDropdown().findElements(By.tagName("option"));
+    }
+
+    public void forceAlert() {
+        ((JavascriptExecutor) driver).executeScript("alert('Hello! I am an alert box!!');");
+    }
+    public void closeAlert() {
+        driver.switchTo().alert().accept();
     }
 
     public void selectOption(String optionName) {
