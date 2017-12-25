@@ -29,6 +29,8 @@ public class DynamicLoadTest {
     @Test
     public void dynamicLoad() {
         dynamicLoadPage.clickStart();
+        assertTrue(dynamicLoadPage.isLoadingDisplayed());
+        assertTrue(dynamicLoadPage.isLoadingNotDisplayed());
         assertTrue(dynamicLoadPage.isFinishDisplayed());
         assertEquals(dynamicLoadPage.getFinish().getText(), "Hello World!");
     }

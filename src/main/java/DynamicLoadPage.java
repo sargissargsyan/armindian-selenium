@@ -22,6 +22,12 @@ public class DynamicLoadPage extends BasePage {
     public boolean isFinishDisplayed() {
         return isDisplayed(find(finishText), 10);
     }
+    public boolean isLoadingDisplayed() {
+        return isDisplayed(find(loadingText), 10);
+    }
+    public boolean isLoadingNotDisplayed() {
+        return isNotDisplayed(find(loadingText), 10);
+    }
 
     public WebElement getFinish() {
         return find(finishText);
