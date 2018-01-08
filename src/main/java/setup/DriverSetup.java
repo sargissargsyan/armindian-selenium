@@ -17,7 +17,7 @@ public class DriverSetup {
                             "/Users/sargis/dev/selenium-drivers/chromedriver");
                     System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
                     driver = new ChromeDriver();
-
+                    driver.manage().window().fullscreen();
                     break;
 
                 case "firefox":
@@ -25,6 +25,7 @@ public class DriverSetup {
                             "/Users/sargis/dev/selenium-drivers/geckodriver");
                     System.setProperty("webdriver.gecko.driver", firefoxDriverLocation);
                     driver = new FirefoxDriver();
+                    driver.manage().window().fullscreen();
                     break;
             }
         }
@@ -33,9 +34,14 @@ public class DriverSetup {
 
     public static void quitDriver() {
         if (driver != null) {
-            driver.close();
-            driver.quit();
-            driver = null;
+            if(BROWSER.equals("firefox")){
+                driver.close();
+                driver = null;
+            } else if (BROWSER.equals("chrome")) {
+                driver.close();
+                driver.quit();
+                driver = null;
+            }
         }
     }
 }

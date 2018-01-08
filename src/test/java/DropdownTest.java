@@ -10,18 +10,13 @@ import static setup.DriverSetup.quitDriver;
 /**
  * Created by sargis on 12/21/17.
  */
-public class DropdownTest {
+public class DropdownTest extends BaseTest {
     private DropdownPage dropdownPage;
 
     @BeforeMethod
     public void setUp() {
         dropdownPage = new DropdownPage();
 
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        quitDriver();
     }
 
     @Test
