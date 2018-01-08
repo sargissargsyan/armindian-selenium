@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,8 @@ import java.util.NoSuchElementException;
  */
 public class BasePage {
     protected WebDriver driver;
+    public static final String BASE_URL =
+            System.getProperty("selenium.url", "http://the-internet.herokuapp.com");
 
     public BasePage(WebDriver webDriver) {
         this.driver = webDriver;
