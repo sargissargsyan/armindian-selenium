@@ -2,12 +2,14 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
+import static setup.DriverSetup.getDriver;
+
 /**
  * Created by sargis on 12/25/17
  */
 public class WindowsPage extends BasePage {
-    public WindowsPage(WebDriver webDriver) {
-        super(webDriver);
+    public WindowsPage() {
+        super(getDriver());
         visit("http://the-internet.herokuapp.com/windows");
     }
 
