@@ -10,7 +10,6 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class HoverPage extends BasePage {
     public HoverPage(WebDriver webDriver) {
-        super(webDriver);
         visit("http://the-internet.herokuapp.com/hovers");
     }
 
@@ -35,5 +34,10 @@ public class HoverPage extends BasePage {
     public WebElement getHeader() {
         hoverAvatar();
         return find(By.className("figcaption"));
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }

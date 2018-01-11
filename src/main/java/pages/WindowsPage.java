@@ -9,8 +9,12 @@ import static setup.DriverSetup.getDriver;
  */
 public class WindowsPage extends BasePage {
     public WindowsPage() {
-        super(getDriver());
-        visit("http://the-internet.herokuapp.com/windows");
+        visit(getUrl());
+    }
+
+    @Override
+    public String getUrl() {
+        return BASE_URL + "/windows";
     }
 
     public void clickLink() {

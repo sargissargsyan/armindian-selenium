@@ -4,27 +4,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static setup.DriverSetup.getDriver;
+
 /**
  * Created by sargis on 12/14/17
  */
-public class BasePage {
+public abstract class BasePage<T> {
     protected WebDriver driver;
     public static final String BASE_URL =
             System.getProperty("selenium.url", "http://the-internet.herokuapp.com");
 
-    public BasePage(WebDriver webDriver) {
-        this.driver = webDriver;
-    }
+    public BasePage() {
+        driver = getDriver();
+        }
 
     public void visit(String url) {
         driver.get(url);
+        PageFactory.initElements(driver, this);
     }
+
 
     public WebElement find(By locator) {
         return driver.findElement(locator);
@@ -82,7 +87,7 @@ public class BasePage {
     public boolean isNotDisplayed(WebElement element, Integer timeout) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, timeout);
-            wait.until(ExpectedConditions.invisibilityOf(element));
+//            wait.until(ExpectedConditions.invisibilityOf(element));
         } catch (TimeoutException e) {
             return false;
         }
@@ -95,5 +100,8 @@ public class BasePage {
         return isDisplayed(find(cssSelector));
     }
 
+    public abstract String getUrl();
 
-}
+
+
+    }

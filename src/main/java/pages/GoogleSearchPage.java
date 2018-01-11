@@ -15,7 +15,6 @@ public class GoogleSearchPage extends BasePage{
 
 
     public GoogleSearchPage(WebDriver webDriver) {
-        super(webDriver);
         visit("http://google.com");
     }
 
@@ -35,5 +34,10 @@ public class GoogleSearchPage extends BasePage{
     public WebElement getFirstResult() {
         List<WebElement> elements = findElements(By.cssSelector(".rc .r"));
         return elements.get(0);
+    }
+
+    @Override
+    public String getUrl() {
+        return null;
     }
 }
