@@ -3,10 +3,18 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 import static setup.DriverSetup.getDriver;
 
 public class DragAndDropPage extends BasePage {
+    @FindBy(css = ".ui-draggable")
+    private WebElement draggable;
+
+    @FindBy(css = ".ui-droppable")
+    private WebElement droppable;
+
+
     public DragAndDropPage() {
         visit(getUrl());
     }
@@ -21,9 +29,7 @@ public class DragAndDropPage extends BasePage {
     }
 
     public void dragAndDrop() {
-        WebElement draggable = find(By.cssSelector(".ui-draggable"));
-        WebElement target = find(By.cssSelector(".ui-droppable"));
-        dragAndDrop(draggable, target);
+                dragAndDrop(draggable, droppable);
     }
 
     public String getDropText() {

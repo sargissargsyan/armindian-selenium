@@ -28,7 +28,6 @@ public class DropdownTest extends BaseTest {
     public void alert() {
         dropdownPage.forceAlert();
         dropdownPage.closeAlert();
-
     }
 
 

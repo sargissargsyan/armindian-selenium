@@ -4,13 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by sargis on 12/25/17
  */
 public class HoverPage extends BasePage {
-    public HoverPage(WebDriver webDriver) {
-        visit("http://the-internet.herokuapp.com/hovers");
+    @FindBy(className = "figcaption")
+    private WebElement figcaption;
+
+    public HoverPage() {
+        visit(getUrl());
     }
 
     public void hoverElement(WebElement element){
@@ -24,20 +28,20 @@ public class HoverPage extends BasePage {
     }
 
     public boolean isHeaderDisplayed() {
-        return isDisplayed(By.className("figcaption"));
+        return isDisplayed(figcaption);
     }
 
     public boolean isHeaderNotDisplayed() {
-        return isNotDisplayed(find(By.className("figcaption")), 5);
+        return isNotDisplayed(figcaption, 5);
     }
 
     public WebElement getHeader() {
         hoverAvatar();
-        return find(By.className("figcaption"));
+        return figcaption;
     }
 
     @Override
     public String getUrl() {
-        return null;
+        return BASE_URL + "/hovers";
     }
 }
