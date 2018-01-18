@@ -29,7 +29,8 @@ public class DragAndDropPage extends BasePage {
     }
 
     public void dragAndDrop() {
-                dragAndDrop(draggable, droppable);
+        log.info("Dragging the Element");
+        dragAndDrop(draggable, droppable);
     }
 
     public String getDropText() {
