@@ -17,6 +17,6 @@ public class DragDropTest extends BaseTest{
     public void dragAndDropTest() {
         assertEquals(dragAndDropPage.getDropText(), "Drop here");
         dragAndDropPage.dragAndDrop();
-        assertEquals(dragAndDropPage.getDropText(), "Dropped!a");
+        assertEquals(dragAndDropPage.getDropText(), "Dropped!");
     }
 }

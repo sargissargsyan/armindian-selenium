@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import static setup.DriverSetup.getDriver;
 /**
  * Created by sargis on 12/14/17
  */
-public abstract class BasePage<T> {
+public abstract class BasePage<T extends LoadableComponent<T>> extends LoadableComponent<T> {
     Logger log = Logger.getLogger(Log.class.getName());
     protected WebDriver driver;
     public static final String BASE_URL =
@@ -32,6 +33,7 @@ public abstract class BasePage<T> {
     public void visit(String url) {
         log.info("Visiting " + url);
         driver.get(url);
+        this.get();
     }
 
 
@@ -110,6 +112,11 @@ public abstract class BasePage<T> {
         }
         return true;
     }
+
+    public WebElement waitForElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
     public boolean isDisplayed(By locator) {
         return isDisplayed(find(locator));
     }
@@ -118,7 +125,15 @@ public abstract class BasePage<T> {
     }
 
     public abstract String getUrl();
+    @Override
+    protected void load() {
 
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+        driver.getCurrentUrl().contains(getUrl());
+    }
 
 
     }
