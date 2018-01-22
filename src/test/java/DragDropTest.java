@@ -9,7 +9,7 @@ public class DragDropTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
-        dragAndDropPage = new DragAndDropPage();
+        dragAndDropPage = (DragAndDropPage) new DragAndDropPage().get();
 
     }
 
