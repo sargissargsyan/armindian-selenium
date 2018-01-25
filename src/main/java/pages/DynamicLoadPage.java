@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import setup.WaitHelper;
 
 import static setup.DriverSetup.getDriver;
 
@@ -35,13 +36,29 @@ public class DynamicLoadPage extends BasePage {
     }
 
     public boolean isFinishDisplayed() {
-        return isDisplayed(finishText, 10);
+        try {
+            WaitHelper.getWait().waitForElementToBeVisible(finishText);
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
+
     public boolean isLoadingDisplayed() {
-        return isDisplayed(loadingText, 10);
+        try {
+            WaitHelper.getWait().waitForElementToBeVisible(loadingText);
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
     public boolean isLoadingNotDisplayed() {
-        return isNotDisplayed(loadingText, 10);
+        try {
+            WaitHelper.getWait().waitForElementNotVisible(loadingText);
+            return true;
+        } catch (Error e) {
+            return false;
+        }
     }
 
     public WebElement getFinish() {
