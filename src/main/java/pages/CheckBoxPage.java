@@ -1,6 +1,5 @@
 package pages;
 
-import com.sun.tools.javac.comp.Check;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;

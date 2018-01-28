@@ -10,15 +10,15 @@ import static org.testng.Assert.assertTrue;
 
 public class UploadFileTest extends BaseTest {
 
-    @Test
-    public void uploadFile() throws IOException {
-        Path filePath  = Files.createTempFile("testFile",".txt");
-        File file = filePath.toFile();
-        String path = file.getAbsolutePath();
-        UploadFilePage uploadFilePage = new UploadFilePage();
-        uploadFilePage.typePath(path);
-        uploadFilePage.submit();
-
-        assertTrue(uploadFilePage.getUploadedFiles().contains(file.getName()),  "File was not uploaded!");
-    }
+//    @Test
+//    public void uploadFile() throws IOException {
+//        Path filePath  = Files.createTempFile("testFile",".txt");
+//        File file = filePath.toFile();
+//        String path = file.getAbsolutePath();
+//        UploadFilePage uploadFilePage = new UploadFilePage();
+//        uploadFilePage.typePath(path);
+//        uploadFilePage.submit();
+//
+//        assertTrue(uploadFilePage.getUploadedFiles().contains(file.getName()),  "File was not uploaded!");
+//    }
 }

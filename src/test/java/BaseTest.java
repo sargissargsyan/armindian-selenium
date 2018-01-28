@@ -1,11 +1,12 @@
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
+import setup.DriverSetup;
 import setup.listeners.SuiteListener;
 
+import static setup.DriverSetup.initDriver;
 import static setup.DriverSetup.quitDriver;
 @Listeners(SuiteListener.class)
 public class BaseTest {
-    @AfterMethod
+    @AfterTest
     public void tearDownBase() {
         quitDriver();
     }
