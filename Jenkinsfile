@@ -1,14 +1,22 @@
-node {
-            stage('E2E Tests - CHROME') {
-                mvn "clean verify -DskipTests=true"
-                mvn "failsafe:integration-test -P selenium-tests"
-            }
-}
-
-def mvn(String goals) {
-    def mvnHome = tool "Maven 3"
-    def javaHome = tool "JAVA 8"
-    withEnv(["JAVA_HOME=${javaHome}", "PATH+MAVEN=${mvnHome}/bin", "DISPLAY=:1.5"]) {
-        sh "mvn ${goals}"
+pipeline {
+    agent any
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
     }
-}
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+            }
+        }
+    }
