@@ -7,7 +7,7 @@ pipeline {
         stage ('Initialize') {
             steps {
                 sh '''
-                    mvn clean instal -DskipTests
+                    mvn clean install -DskipTests
                     mvn surefire:test
                 ''' 
             }
