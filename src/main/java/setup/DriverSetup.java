@@ -3,6 +3,7 @@ package setup;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeClass;
@@ -61,7 +62,8 @@ public class DriverSetup {
             protected WebDriver initialValue() {
                 WebDriver webDriver = null;
                 try {
-                    webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+                    capability.setCapability(CapabilityType.PLATFORM_NAME, "Windows 10");
+                    webDriver = new RemoteWebDriver(new URL("http://sargisgermany:d885cbd8-a6c5-472e-8517-42d1e9cea6bd@ondemand.saucelabs.com:80/wd/hub"), capability);
                     webDriverPool.add(webDriver);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
