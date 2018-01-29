@@ -2,8 +2,9 @@ pipeline {
     agent any
     tools { 
         maven 'maven' 
+        docker 'docker'
     }
-
+    stages {
         stage ('Build') {
             steps {
                 sh '''
@@ -12,4 +13,5 @@ pipeline {
                     '''
             }
         }
- }
+    }
+}
