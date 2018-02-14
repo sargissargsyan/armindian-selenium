@@ -28,7 +28,7 @@ public class DriverSetup {
                     String chromeDriverLocation = System.getProperty("selenium.chromedriver",
                             "/Users/sargis/dev/selenium-drivers/chromedriver");
                     System.setProperty("webdriver.chrome.driver", chromeDriverLocation);
-                    if (Boolean.valueOf(System.getProperty("selenium.remote", "true"))) {
+                    if (Boolean.valueOf(System.getProperty("selenium.remote", "false"))) {
                         initRemoteDriver(DesiredCapabilities.chrome());
                     } else {
                         driverThread.set(new ChromeDriver());
@@ -49,7 +49,7 @@ public class DriverSetup {
         capability.setCapability(CapabilityType.PLATFORM_NAME, "Linux");
         WebDriver webDriver = null;
         try {
-            webDriver = new RemoteWebDriver(new URL("http://sargisgermany:d885cbd8-a6c5-472e-8517-42d1e9cea6bd@ondemand.saucelabs.com:80/wd/hub"), capability);
+            webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

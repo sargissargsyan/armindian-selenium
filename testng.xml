@@ -5,7 +5,7 @@
         <listener class-name="setup.listeners.RetryListener" />
     </listeners>
 
-    <test name="ArmIndian Selenium" parallel="methods" thread-count="2">
+    <test name="ArmIndian Selenium" parallel="methods" thread-count="10">
         <packages>
             <package name=""/>
         </packages>
