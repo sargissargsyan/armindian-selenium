@@ -1,4 +1,5 @@
 import api.ApiHelper;
+import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -8,6 +9,7 @@ import pages.HoverPage;
 
 import java.io.IOException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static setup.DriverSetup.getDriver;
 
@@ -27,9 +29,11 @@ public class HoverTest extends BaseTest {
     @Test
     public void dropdownSelect() throws IOException {
         getDriver().get("http://development.click2sure.co.za");
+        String loginJson = new ApiHelper().login("k2324@yopmail.com", "qwe123123");
         ((JavascriptExecutor)getDriver()).executeScript(String.format(
-                "window.localStorage.setItem('ngStorage-user_auth','%s');", new ApiHelper().login("k2324@yopmail.com", "qwe123123")));
+                "window.localStorage.setItem('ngStorage-user_auth','%s');", loginJson));
         getDriver().get("http://development.click2sure.co.za");
+        assertEquals(new JSONObject(loginJson).get("pk"), "1234");
         assertTrue(hoverPage.isHeaderNotDisplayed(), "Header was visible!");
         hoverPage.hoverAvatar();
         assertTrue(hoverPage.isHeaderDisplayed(), "Header was not visible!");
